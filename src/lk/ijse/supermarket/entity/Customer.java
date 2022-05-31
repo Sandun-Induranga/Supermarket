@@ -1,5 +1,7 @@
 package lk.ijse.supermarket.entity;
 
+import embaded.Name;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,11 +12,11 @@ public class Customer {
     @Id
     private String id;
     @Column(name = "customer_name")
-    private String name;
+    private Name name;
     private double salary;
     private String address;
 
-    public Customer(String id, String name, double salary, String address) {
+    public Customer(String id, Name name, double salary, String address) {
         this.id = id;
         this.name = name;
         this.salary = salary;
@@ -32,11 +34,11 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
