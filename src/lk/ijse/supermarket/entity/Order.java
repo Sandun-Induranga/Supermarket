@@ -2,7 +2,10 @@ package lk.ijse.supermarket.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Orders")
 public class Order {
@@ -13,6 +16,8 @@ public class Order {
     private int qty;
     @ManyToOne
     private Customer customer;
+    @ManyToMany
+    private List<Item> itemList = new ArrayList<>();
 
     public Order() {
     }
@@ -74,5 +79,13 @@ public class Order {
                 ", qty=" + qty +
                 ", customer=" + customer +
                 '}';
+    }
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 }

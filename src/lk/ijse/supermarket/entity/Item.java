@@ -2,6 +2,9 @@ package lk.ijse.supermarket.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity()
 public class Item {
@@ -11,6 +14,8 @@ public class Item {
     private String description;
     private int qty;
     private double unitPrice;
+    @ManyToMany(mappedBy = "itemList")
+    private List<Order> orderList = new ArrayList<>();
 
     public Item(String code, String description, int qty, double unitPrice) {
         this.code = code;
@@ -62,5 +67,13 @@ public class Item {
                 ", qty=" + qty +
                 ", unitPrice=" + unitPrice +
                 '}';
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 }
