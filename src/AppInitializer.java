@@ -1,6 +1,3 @@
-import embaded.Name;
-import lk.ijse.supermarket.entity.Customer;
-import lk.ijse.supermarket.entity.Item;
 import lk.ijse.supermarket.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,14 +10,12 @@ public class AppInitializer {
 
         Transaction transaction = session.beginTransaction();
 
-        Name name = new Name("John","Silva","Perera");
-
-        Customer customer1 = new Customer("C001", name, 30000, "Galle");
+//        Customer customer1 = new Customer("C001", name, 30000, "Galle");
 //        Customer customer2 = new Customer("C002", "Kamal", 40000, "Panadura");
 //        Customer customer3 = new Customer("C003", "Nimal", 50000, "Matara");
 
         // Save Customer
-        session.save(customer1);
+//        session.save(customer1);
 //        session.save(customer2);
 //        session.save(customer3);
 //
