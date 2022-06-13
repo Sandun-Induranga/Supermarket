@@ -10,23 +10,21 @@ public class Order {
     @MapsId("orderId")
     private String orderId;
     private String date;
-    private double unitPrice;
-    private int qty;
+    private double cost;
     @ManyToOne
     private Customer customer;
     @ManyToMany(mappedBy = "order")
     private
     List<OrderDetail> orderDetailList = new ArrayList<>();
 
-    public Order() {
-    }
-
-    public Order(String orderId, String date, double unitPrice, int qty, Customer customer) {
+    public Order(String orderId, String date, double cost, Customer customer) {
         this.orderId = orderId;
         this.date = date;
-        this.unitPrice = unitPrice;
-        this.qty = qty;
+        this.cost = cost;
         this.customer = customer;
+    }
+
+    public Order() {
     }
 
     public String getOrderId() {
@@ -45,21 +43,6 @@ public class Order {
         this.date = date;
     }
 
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public int getQty() {
-        return qty;
-    }
-
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
 
     public Customer getCustomer() {
         return customer;
@@ -69,22 +52,19 @@ public class Order {
         this.customer = customer;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", date='" + date + '\'' +
-                ", unitPrice=" + unitPrice +
-                ", qty=" + qty +
-                ", customer=" + customer +
-                '}';
-    }
-
     public List<OrderDetail> getOrderDetailList() {
         return orderDetailList;
     }
 
     public void setOrderDetailList(List<OrderDetail> orderDetailList) {
         this.orderDetailList = orderDetailList;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 }

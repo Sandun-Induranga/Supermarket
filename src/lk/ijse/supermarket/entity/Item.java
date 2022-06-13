@@ -8,6 +8,8 @@ import java.util.List;
 public class Item {
     @Id
     @MapsId("code")
+    @JoinColumns({
+            @JoinColumn(name="code", referencedColumnName="code")})
     private String code;
     private String description;
     private int qty;

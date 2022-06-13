@@ -1,6 +1,7 @@
 import lk.ijse.supermarket.entity.Customer;
 import lk.ijse.supermarket.entity.Item;
 import lk.ijse.supermarket.entity.Order;
+import lk.ijse.supermarket.entity.OrderDetail;
 import lk.ijse.supermarket.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -34,9 +35,9 @@ public class AppInitializer {
 //
 //        // Item
 //
-//        Item item1 = new Item("I001", "Rice", 20, 200);
-//        Item item2 = new Item("I002", "Biscuit", 100, 140);
-//        Item item3 = new Item("I003", "Sugar", 50, 500);
+        Item item1 = new Item("I001", "Rice", 20, 200);
+        Item item2 = new Item("I002", "Biscuit", 100, 140);
+        Item item3 = new Item("I003", "Sugar", 50, 500);
 //        session.save(item1);
 //        session.save(item2);
 //        session.save(item3);
@@ -54,23 +55,40 @@ public class AppInitializer {
 
         // Order
 
-        Order order1 = new Order("O001", LocalDate.now().toString(),200,2,customer1);
-        Order order2 = new Order("O002", LocalDate.now().toString(),700,5,customer3);
-        Order order3 = new Order("O003", LocalDate.now().toString(),450,1,customer1);
+        Order order1 = new Order("O001", LocalDate.now().toString(), 200, customer1);
+        Order order2 = new Order("O002", LocalDate.now().toString(), 700, customer3);
+        Order order3 = new Order("O003", LocalDate.now().toString(), 450, customer1);
 
-        session.save(order1);
-        session.save(order2);
-        session.save(order3);
+//        session.save(order1);
+//        session.save(order2);
+//        session.save(order3);
+//
+//        session.get(Order.class,"O001");
+//
+//        order1.setCost(250);
+//        session.update(order1);
+//
+//        session.delete(order3);
 
-        session.get(Item.class,"I001");
+        // OrderDetail
 
-        order1.setQty(1);
-        order1.setUnitPrice(250);
-        session.update(order1);
-
-        session.delete(order3);
+//        OrderDetail orderDetail1 = new OrderDetail("O001", "I001", order1, item1, 2, 100);
+//        OrderDetail orderDetail2 = new OrderDetail("O002", "I001", order1, item1, 1, 200);
+//        OrderDetail orderDetail3 = new OrderDetail("O002", "I002", order1, item1, 2, 250);
+//
+//        session.save(orderDetail1);
+//        session.save(orderDetail2);
+//        session.save(orderDetail3);
+//
+//        session.get(OrderDetail.class, "O001");
+//
+//        orderDetail1.setUnitPrice(150);
+//        session.update(orderDetail1);
+//
+//        session.delete(orderDetail1);
 
         transaction.commit();
         session.close();
+
     }
 }

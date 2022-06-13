@@ -1,13 +1,17 @@
 package lk.ijse.supermarket.entity;
 
+import com.sun.corba.se.spi.ior.IdentifiableFactory;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-@Entity()
-public class OrderDetail {
+@Entity
+public class OrderDetail implements Serializable {
     @Id
     private
-    String id;
+    String orderId;
+    @Id
     private
     String code;
     @ManyToOne
@@ -17,12 +21,21 @@ public class OrderDetail {
     private int qty;
     private double unitPrice;
 
-    public String getOrderId() {
-        return id;
+    public OrderDetail(String orderId, String code, Order order, Item item, int qty, double unitPrice) {
+        this.orderId = orderId;
+        this.code = code;
+        this.order = order;
+        this.item = item;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
     }
 
-    public void setOrderId(String id) {
-        this.id = id;
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public String getCode() {
