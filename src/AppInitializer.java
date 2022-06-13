@@ -1,8 +1,11 @@
 import lk.ijse.supermarket.entity.Customer;
 import lk.ijse.supermarket.entity.Item;
+import lk.ijse.supermarket.entity.Order;
 import lk.ijse.supermarket.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.time.LocalDate;
 
 
 public class AppInitializer {
@@ -14,9 +17,9 @@ public class AppInitializer {
 
 //        // Customer
 //
-//        Customer customer1 = new Customer("C001", "Kamal", "Galle", 55000);
-//        Customer customer2 = new Customer("C002", "Nimal", "Colombo", 35000);
-//        Customer customer3 = new Customer("C003", "Bandara", "Panadura", 45000);
+        Customer customer1 = new Customer("C001", "Kamal", "Galle", 55000);
+        Customer customer2 = new Customer("C002", "Nimal", "Colombo", 35000);
+        Customer customer3 = new Customer("C003", "Bandara", "Panadura", 45000);
 //        session.save(customer1);
 //        session.save(customer2);
 //        session.save(customer3);
@@ -45,6 +48,27 @@ public class AppInitializer {
 //        session.update(item1);
 //
 //        session.delete(item2);
+//
+//        transaction.commit();
+//        session.close();
+
+        // Order
+
+        Order order1 = new Order("O001", LocalDate.now().toString(),200,2,customer1);
+        Order order2 = new Order("O002", LocalDate.now().toString(),700,5,customer3);
+        Order order3 = new Order("O003", LocalDate.now().toString(),450,1,customer1);
+
+        session.save(order1);
+        session.save(order2);
+        session.save(order3);
+
+        session.get(Item.class,"I001");
+
+        order1.setQty(1);
+        order1.setUnitPrice(250);
+        session.update(order1);
+
+        session.delete(order3);
 
         transaction.commit();
         session.close();
